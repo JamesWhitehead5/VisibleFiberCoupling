@@ -2,7 +2,7 @@ import serial
 import time
 
 class NewFocus6300:
-    def __init__(self, com_port='COM3'):
+    def __init__(self, com_port='COM4'):
         self._ser = serial.Serial(com_port, 19200, bytesize=serial.EIGHTBITS, parity=serial.PARITY_NONE, stopbits=serial.STOPBITS_ONE,
                       timeout=0.5)
 
