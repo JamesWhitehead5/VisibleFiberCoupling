@@ -63,6 +63,15 @@ class NewFocus6300:
             print(not self.is_finished())
             time.sleep(0.01)
 
+    def set_current(self,cur):
+        "set the driving current for the laser"
+        print(self._query(":SOURce:CURRent:LEVel:DIODe {}".format(cur)))
+
+    def set_wavlength(self,wl):
+        "set the wavelenght of the laser"
+        print(self._query(":SOURce:WAVElength {}".format(wl)))
+
+
     def is_finished(self):
         return float(self._query("*OPC?")) == 1
 
@@ -81,9 +90,11 @@ class NewFocus6300:
 
 
 if __name__=='__main__':
-    nf = NewFocus6300(com_port='COM3')
+    nf = NewFocus6300(com_port='COM4')
     print(nf.get_ID())
     print(nf.get_wavelength())
+    nf.set_current(10)
+    nf.set_wavlength(638.3)
 
 
 
